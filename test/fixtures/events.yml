@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hold_place: MyString
+  hold_time: 2015-01-31 04:18:25
+  add_dish_dealine: 2015-01-31 04:18:25
+  admin_id: 1
+
+two:
+  hold_place: MyString
+  hold_time: 2015-01-31 04:18:25
+  add_dish_dealine: 2015-01-31 04:18:25
+  admin_id: 1
