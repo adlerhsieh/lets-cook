@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  get 'home/welcome'
+  resources :events, only: [:index, :create]
+  resources :dishes, only: [:index, :create, :destroy] do
+    collection do
+      get 'search'
+    end
+  end
+  resources :prepare_lists, only: :index
+
+  root to: "home#index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
