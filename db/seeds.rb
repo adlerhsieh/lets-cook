@@ -9,7 +9,7 @@
 # https://icook.tw/recipes/79515
 dish = Dish.create(
 				:name => "日式馬鈴薯燉肉",
-				:lg_pic_link => ""
+				:lg_pic_link => "images/potato_meat.jpg"
 				)
 dish.ingredients.create(
 				:name => "豬肉切塊",
@@ -43,7 +43,7 @@ dish.ingredients.create(
 # https://icook.tw/recipes/99716
 dish2 = Dish.create(
 				:name => "巨無霸黃金蛋餃",
-				:lg_pic_link => ""
+				:lg_pic_link => "images/gold_egg.jpg"
 				)
 dish2.ingredients.create(
 				:name => "豬絞肉",
@@ -78,7 +78,7 @@ dish2.ingredients.create(
 # https://icook.tw/recipes/99401
 dish3 = Dish.create(
 				:name => "台式控肉",
-				:lg_pic_link => ""
+				:lg_pic_link => "/images/taiwanese_meat.jpg"
 				)
 dish3.ingredients.create(
 				:name => "五花肉",
@@ -120,7 +120,7 @@ dish3.ingredients.create(
 # https://icook.tw/recipes/99375
 dish4 = Dish.create(
 				:name => "冷壓初榨橄欖油香煎嫩雞腿",
-				:lg_pic_link => ""
+				:lg_pic_link => "/images/chicken.jpg"
 				)
 dish4.ingredients.create(
 				:name => "雞腿",
@@ -151,7 +151,7 @@ dish4.ingredients.create(
 # https://icook.tw/recipes/99374
 dish5 = Dish.create(
 				:name => "孜然香豬肉",
-				:lg_pic_link => ""
+				:lg_pic_link => "/images/pork.jpg"
 				)
 dish5.ingredients.create(
 				:name => "梅花豬肉片",
