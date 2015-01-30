@@ -1,16 +1,16 @@
 class DishController < ApplicationController
-  def index
-  end
-
-  def create
+  # def create
     
-  end
+  # end
 
   def destroy
-    
+    @dish = Dish.find(params[:id])
+    @dish.destroy
   end
 
   def search
-    
+    @dishes = Dish.includes(:ingredients)
+                  .where("name = ? or ingredients.name = ?", "%#{params[:file]}%", "%#{params[:file]}%")
+                  .references(:ingredients)
   end
 end
