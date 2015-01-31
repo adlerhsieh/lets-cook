@@ -1,7 +1,13 @@
 class DishesController < ApplicationController
+  require 'open-uri'
+  require 'nokogiri'
+
   def create
     @dish = Dish.new(dish_params)
-    @ingredients = Dish.where(:user_id => nil).find_by_name(@dish[:name]).ingredients.all
+
+    @dish.ingredients.create(:name => , :amount => , )
+
+    # @ingredients = .ingredients.all
     @ingredients.each do |ingredient|
       hash = ingredient.serializable_hash.except("id", "created_at", "updated_at")
       Ingredient.create(hash)
@@ -15,17 +21,20 @@ class DishesController < ApplicationController
   end
 
   def search
-    # @dishes = Dish.includes(:ingredients)
-    #               .where("name = ? or ingredients.name = ?", "%#{params[:file]}%", "%#{params[:file]}%")
-    #               .references(:ingredients)
-    @dishes = Dish.where(['name LIKE ?', "%#{params[:file]}%"])
-    @ingredients = Ingredient.where(['name LIKE ?', "%#{params[:file]}%"])
-    if @ingredients.size > 0
-      @ingredients.each do |ingredient|
-        @dishes.push(ingredient.dish)
-      end
+    content = Nokogiri::HTML(open("https://icook.tw/recipes/fulltext_search?query=#{params[:file]}"))
+    title_array = content.css("div.media-body.card-info a")
+    image_array = content.css("img.img-responsive")
+
+    object_array = []
+
+    title_array.each do |title|
+      index = title_array.index(title)
+      object_array.push({"name" => title_array[index].attr("title"),
+                 "lg_pic_link" => image_array[index].attr("src"),
+                 "link"  => "https://icook.tw" + title_array[index].attr('href')
+                })
     end
-    render :json => @dishes.uniq
+    return object_array
   end
 
   private
