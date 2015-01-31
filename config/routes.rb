@@ -5,10 +5,14 @@ Rails.application.routes.draw do
   resources :event, only: [:index, :create, :show]
   resources :dishes, only: [:create, :destroy] do
     collection do
-      get 'search'
+      post 'search'
     end
   end
   resources :prepare_lists, only: :index
+<<<<<<< Updated upstream
+=======
+  resources :ingredients, only: [:create, :destroy]
+>>>>>>> Stashed changes
 
   root to: "home#welcome"
   
