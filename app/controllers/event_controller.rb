@@ -5,7 +5,7 @@ class EventController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @dishes = Dish.where(event_id: @event.id)
+    @dishes = Dish.where(event_id: @event.id)    
     @prepared_ingredients = current_user.prepared_ingredients
   end
 

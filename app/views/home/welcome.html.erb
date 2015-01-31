@@ -4,8 +4,15 @@
 
         <ul>
             <li class="pure-menu-selected"><a href="#">建立活動</a></li>
-            <li><a href="#">登入</a></li>
-            <li><a href="#">登出</a></li>
+            <% if current_user %>
+              <li>
+                <%= link_to("登出", destroy_user_session_path, method: :delete) %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to("登入", new_user_session_path) %>
+              </li>
+            <% end %>
         </ul>
     </div>
 </div>
