@@ -13,3 +13,52 @@
  *= require_tree .
  *= require_self
  */
+
+.title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 华文细黑, STHeiti, 微软雅黑, 'Microsoft YaHei', SimHei, sans-serif;
+  font-size: 60px;
+  font-weight: 900;
+  color: white;
+}
+.features {
+  text-align: center;
+}
+
+.four_steps h2{
+  color:#fff;
+}
+.four_steps .circle h2 {
+  color:#2d3e50;
+}
+.features i{
+  font-size: 5em;
+  margin-top: 20px;
+}
+.pure-button-primary {
+  background-color: hsla(48, 100%, 50%, 1) !important;
+  color: white!important;
+}
+.steps {
+  text-align: center;
+  font-weight: 400;
+}
+
+.circle {
+        width:180px;
+        height:180px;
+        background-color: #fff;
+        color: #2d3e50 !important;
+        border-radius: 100%;
+        text-align: center;
+        margin: auto;
+      }
+      .circle h2 {
+        display: inline;
+        vertical-align: middle;
+      }
+
+      .helper {
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+      }
