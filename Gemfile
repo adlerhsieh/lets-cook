@@ -49,3 +49,4 @@ end
 
 gem 'devise'
 gem 'rails_12factor'
+# gem 'watir-webdriver'

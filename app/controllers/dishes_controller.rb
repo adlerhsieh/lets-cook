@@ -1,18 +1,36 @@
 class DishesController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
+  require 'watir-webdriver'
 
   def create
-    @dish = Dish.new(dish_params)
+    if dish_params[:link].scan("http").count > 0
+      link = dish_params[:link]
+    else
+      link = dish_params[:link][26..-1]
+    end
 
-    @dish.ingredients.create(:name => "", :amount => "")
+    # b = Watir::Browser.new
+    # b.goto('')
 
-    # @ingredients = .ingredients.all
-    # @ingredients.each do |ingredient|
-    #   hash = ingredient.serializable_hash.except("id", "created_at", "updated_at")
-    #   Ingredient.create(hash)
-    # end
-    render :json => @dish
+    content = Nokogiri::HTML(open(URI::encode(link)))
+    item_array = content.css("li .object a")
+    amount_array = content.css("li .unit")
+    object_array = []
+
+    item_array.each do |item|
+      index = item_array.index(item)
+      object_array.push({
+                        "name" => item_array[index].content,
+                        "amount" => amount_array[index].content
+                        })
+    end
+
+    @dish = Dish.new(dish_params.except(:link)).save!
+
+    # @dish.ingredients.create(:name => "", :amount => "")
+
+    render :json => object_array
   end
 
   def destroy
@@ -48,6 +66,6 @@ class DishesController < ApplicationController
   private
 
   def dish_params
-    params.require(:dish).permit(:user_id, :event_id, :name, :lg_pic_link)
+    params.require(:dish).permit(:user_id, :event_id, :name, :lg_pic_link, :link)
   end
 end
