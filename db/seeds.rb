@@ -11,33 +11,40 @@ dish = Dish.create(
 				:name => "日式馬鈴薯燉肉",
 				:lg_pic_link => "images/potato_meat.jpg"
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "豬肉切塊",
-				:amount => "150元左右"
+				:amount => "150元左右",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "洋蔥",
-				:amount => "半個"
+				:amount => "半個",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "馬鈴薯",
-				:amount => "2個"
+				:amount => "2個",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "紅蘿蔔",
-				:amount => "少許"
+				:amount => "少許",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "醬油",
-				:amount => "約4-5匙"
+				:amount => "約4-5匙",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "水、鹽",
-				:amount => "少許"
+				:amount => "少許",
+				:dish_id => dish.id
 				)
-dish.ingredients.create(
+Ingredient.create(
 				:name => "冰糖約3、4個",
-				:amount => "少許"
+				:amount => "少許",
+				:dish_id => dish.id
 				)
 
 # https://icook.tw/recipes/99716
