@@ -1,5 +1,5 @@
 class Dish < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  belongs_to :event, dependent: :destroy
-  has_many :ingredients
+  belongs_to :user
+  belongs_to :event
+  has_many :ingredients, dependent: :destroy
 end
