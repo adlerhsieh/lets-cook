@@ -6,7 +6,7 @@ class DishesController < ApplicationController
       hash = ingredient.serializable_hash.except("id", "created_at", "updated_at")
       Ingredient.create(hash)
     end
-    render :json => true
+    render :json => @dish
   end
 
   def destroy
@@ -23,14 +23,15 @@ class DishesController < ApplicationController
     if @ingredients.size > 0
       @ingredients.each do |ingredient|
         @dishes.push(ingredient.dish)
-      end
+      end 
     end
-    render :json => @dishes.uniq
+    @dishes = @dishes.uniq
+    render :json => @dishes
   end
 
   private
 
-    def dish_params
-      params.require(:dish).permit(:user_id, :event_id, :name, :lg_pic_link)
-    end
+  def dish_params
+    params.require(:dish).permit(:user_id, :event_id, :name, :lg_pic_link)
+  end
 end
