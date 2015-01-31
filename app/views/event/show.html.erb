@@ -1,290 +1,80 @@
 <div id="layout" class="content pure-g">
-    <div id="nav" class="pure-u">
-        <a href="#" class="nav-menu-button">Menu</a>
-
-        <div class="nav-inner">
-
-            <div class="pure-menu pure-menu-open">
-                <ul>
-                    <li><a href="#">搜尋食譜 <span class="email-count"></span></a></li>
-                    <li><a href="#">備忘清單</a></li>
-                                        
-                </ul>
-            </div>
-        </div>
+  <div id="nav" class="pure-u">
+    <a href="#" class="nav-menu-button">Menu</a>
+    <div class="nav-inner">
+      <div class="pure-menu pure-menu-open">
+        <ul>
+          <li><a href="#">搜尋食譜 <span class="email-count"></span></a></li>
+          <li><a href="#">備忘清單</a></li>
+        </ul>
+      </div>
     </div>
-
-    <div id="list" class="pure-u-1">
-
-        <div class="email-item email-item-selected pure-g">
-            
-
-            <div class="pure-u-1" style="text-align:center">
-                  <form class="pure-form">
-                    <fieldset>
-                    <input id="name" type="text" placeholder="輸入食材..">
-                    <button class="pure-button pure-button-primary">搜尋</button>
-                  </fieldset>
-                  </form>
-                    
-                
-            </div>
-        </div>
-
-        <div class="email-item  pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Tilo Mitra&#x27;s avatar" height="64" width="64" src="img/common/tilo-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                
-                <h4 class="email-subject">青醬義大利麵</h4>
-                <p class="email-desc">
-                    Hey, I just wanted to check in with you from Toronto. I got here earlier today.
-                </p>
-                <button class="pure-button pure-button-success">加入</button>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Eric Ferraiuolo&#x27;s avatar" height="64" width="64" src="img/common/ericf-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">Eric Ferraiuolo</h5>
-                <h4 class="email-subject">Re: Pull Requests</h4>
-                <p class="email-desc">
-                    Hey, I had some feedback for pull request #51. We should center the menu so it looks better on mobile.
-                </p>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="YUI&#x27;s avatar" height="64" width="64" src="img/common/yui-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">YUI Library</h5>
-                <h4 class="email-subject">You have 5 bugs assigned to you</h4>
-                <p class="email-desc">
-                    Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla.
-                </p>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Reid Burke&#x27;s avatar" height="64" width="64" src="img/common/reid-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">Reid Burke</h5>
-                <h4 class="email-subject">Re: Design Language</h4>
-                <p class="email-desc">
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa.
-                </p>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Andrew Wooldridge&#x27;s avatar" height="64" width="64" src="img/common/andrew-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">Andrew Wooldridge</h5>
-                <h4 class="email-subject">YUI Blog Updates?</h4>
-                <p class="email-desc">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                </p>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Yahoo! Finance&#x27;s Avatar" height="64" width="64" src="img/common/yfinance-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">Yahoo! Finance</h5>
-                <h4 class="email-subject">How to protect your finances from winter storms</h4>
-                <p class="email-desc">
-                    Mauris tempor mi vitae sem aliquet pharetra. Fusce in dui purus, nec malesuada mauris.
-                </p>
-            </div>
-        </div>
-
-        <div class="email-item pure-g">
-            <div class="pure-u">
-                <img class="email-avatar" alt="Yahoo! News&#x27; avatar" height="64" width="64" src="img/common/ynews-avatar.png">
-            </div>
-
-            <div class="pure-u-3-4">
-                <h5 class="email-name">Yahoo! News</h5>
-                <h4 class="email-subject">Summary for April 3rd, 2012</h4>
-                <p class="email-desc">
-                    We found 10 news articles that you may like.
-                </p>
-            </div>
-        </div>
+  </div>
+  <div id="list" class="pure-u">
+    <div class="email-item email-item-selected pure-g " id="search_block">
+      <div class="pure-u-1" style="text-align:center">
+        <form class="pure-form">
+          <fieldset>
+            <input id="search_input" type="text" placeholder="輸入食材..">
+            <button class="pure-button pure-button-primary" id="search">搜尋</button>
+          </fieldset>
+        </form>
+      </div>
     </div>
-
-    <div id="main" class="pure-u-1">
-
-               <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
-        <div class="pure-g">
-          <div class="pure-u-1 dishes">
-            <div class="pure-u-1-4">
-                <h1>青醬麵XD</h1>
-                
-            </div>
-            <div class="pure-u-3-4">
-                <table class="pure-table pure-table-horizontal" style="width:100%">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>食材</th>
-                          <th>提供人</th>
-                          <th>我來提供</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>蔥</td>
-                          <td>None</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>2</td>
-                          <td>Toyota</td>
-                          <td>Camry</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>3</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>4</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-                  </tbody>
-              </table>
-                          </div>
-                          <hr>
+  </div>
+  <div id="main" class="pure-u">
+    <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
+    
+      <div class=" dishes">
+        <div>
+          <div class="">
+            <h1>青醬麵XD</h1>
           </div>
-
-          <div class="pure-u-1  dishes">
-            <div class="pure-u-1-4">
-                <h1>青醬麵XD</h1>
-                
-            </div>
-            <div class="pure-u-3-4">
-                <table class="pure-table pure-table-horizontal" style="width:100%">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>食材</th>
-                          <th>提供人</th>
-                          <th>我來提供</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>蔥</td>
-                          <td>None</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>2</td>
-                          <td>Toyota</td>
-                          <td>Camry</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>3</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>4</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-                  </tbody>
-              </table>
-                          </div>
-                          <hr>
-          </div> 
-          <div class="pure-u-1  dishes">
-            <div class="pure-u-1-4">
-                <h1>青醬麵XD</h1>
-                
-            </div>
-            <div class="pure-u-3-4">
-                <table class="pure-table pure-table-horizontal" style="width:100%">
-                  <thead>
-                      <tr>
-                          <th>#</th>
-                          <th>食材</th>
-                          <th>提供人</th>
-                          <th>我來提供</th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>蔥</td>
-                          <td>None</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>2</td>
-                          <td>Toyota</td>
-                          <td>Camry</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>3</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-
-                      <tr>
-                          <td>4</td>
-                          <td>Hyundai</td>
-                          <td>Elantra</td>
-                          <td><input id="" type="checkbox"></td>
-                      </tr>
-                  </tbody>
-              </table>
-                          </div>
-                          <hr>
-          </div> 
-              </div>
-            </div>
+          <div class="">
+            <table class="pure-table pure-table-horizontal" style="width:100%">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>食材</th>
+                  <th>提供人</th>
+                  <th>我來提供</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>蔥</td>
+                  <td>None</td>
+                  <td><input id="" type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Toyota</td>
+                  <td>Camry</td>
+                  <td><input id="" type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Hyundai</td>
+                  <td>Elantra</td>
+                  <td><input id="" type="checkbox"></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Hyundai</td>
+                  <td>Elantra</td>
+                  <td><input id="" type="checkbox"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        
+      </div>
+    
+  </div>
+</div>
 
 <script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
 
@@ -302,4 +92,52 @@
         // Your application code goes here...
 
     });
+
+    $(function(){
+      $('#search').click(function(e){
+        var search_input = $('#search_input').val();
+        e.preventDefault();
+        $.ajax({
+          url:"/dishes/search.json",
+          type: "POST",
+          data:{"file": search_input},
+          success:function(result){
+            console.table(result);
+            var search_block = $('#search_block');
+            $('#list').empty();
+            $('#list').append(search_block);
+            for (var i = 0; i <= result.length - 1; i++) {
+              $('#list').append(
+                '<div class="email-item  pure-g"><div class="pure-u"><img id="'+result[i]['name']+'" class="email-avatar" alt="Tilo Mitra&#x27;s avatar" height="64" width="64" src="'+result[i]['lg_pic_link'] +'"></div><div class="pure-u-3-4"><h4 class="email-subject">'+result[i]['name']+'</h4><p class="email-desc"></p><button class="pure-button pure-button-success add-dish" id="'+result[i]['name']+'">加入</button></div></div><span id="link-'+result[i]['name']+'" style="display: none" class="'+result[i]['name']+'">'+result[i]["link"]+'</span>'
+              );
+            };
+          },
+          error: 
+            function(){
+              // alert("QQ");
+              // alert('error');
+            }
+          });
+        });
+      $("#list").on("click",'.add-dish',function(){
+        console.log($('h4.dish-name-'+$(this).data("child")).text());
+        $.ajax({
+          url: "/dishes",
+          type: "POST",
+          data: {
+                 "dish": {
+                   "user_id": "<%= current_user.id %>",
+                   "event_id": "<%= @event.id %>",
+                   "name": $(this).attr('id'),
+                   "lg_pic_link": $('img#'+ $(this).attr('id')).attr("src"),
+                   "link": $('span.'+ $(this).attr('id')).text()
+                 }
+                },
+          success: function(result){
+            console.log($('h4.dish-name-'+$(this).data("child")).text());
+          }
+        });
+      });
+    });
+    console.log("<%= current_user.id %>");
 </script>

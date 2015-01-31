@@ -3,10 +3,10 @@ class PrepareListsController < ApplicationController
     @prepared_ingredients = current_user.prepared_ingredients
   end
 
-  def user_prepared_list
-  	user = User.find(params[:id])
-  	render :json => user.prepared_ingredients
-  end
+  # def user_prepared_list
+  # 	user = User.find(params[:id])
+  # 	render :json => user.prepared_ingredients
+  # end
 
   def create
     puts params

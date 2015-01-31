@@ -5,15 +5,11 @@ Rails.application.routes.draw do
   resources :event, only: [:index, :create, :show]
   resources :dishes, only: [:create, :destroy] do
     collection do
-      get 'search'
+      post 'search'
     end
   end
-  resources :prepare_lists, only: [:index, :create] do
-    member do
-      get "user_prepared_list"
-    end
-  end
-  resources :ingredients
+  resources :prepare_lists, only: :index
+  resources :ingredients, only: [:create, :destroy]
 
   root to: "home#welcome"
   

@@ -1,2 +1,2 @@
-module DishHelper
+module DishesHelper
 end
