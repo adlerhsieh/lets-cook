@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get 'home/welcome'
-  resources :events, only: [:index, :create]
-  resources :dishes, only: [:index, :create, :destroy] do
+  resources :event, only: [:index, :create, :show]
+  resources :dishes, only: [:create, :destroy] do
     collection do
       get 'search'
     end
