@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :prepare_lists, only: :index
+  resources :prepare_lists, only: [:index, :create] do
+    member do
+      get "user_prepared_list"
+    end
+  end
   resources :ingredients
 
   root to: "home#welcome"
