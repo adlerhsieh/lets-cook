@@ -15,9 +15,17 @@ class DishesController < ApplicationController
   end
 
   def search
-    @dishes = Dish.includes(:ingredients)
-                  .where("name = ? or ingredients.name = ?", "%#{params[:file]}%", "%#{params[:file]}%")
-                  .references(:ingredients)
+    # @dishes = Dish.includes(:ingredients)
+    #               .where("name = ? or ingredients.name = ?", "%#{params[:file]}%", "%#{params[:file]}%")
+    #               .references(:ingredients)
+    @dishes = Dish.where(['name LIKE ?', "%#{params[:file]}%"])
+    @ingredients = Ingredient.where(['name LIKE ?', "%#{params[:file]}%"])
+    if @ingredients.size > 0
+      @ingredients.each do |ingredient|
+        @dishes.push(ingredient)
+      end 
+    end
+    render :json => @dishes
   end
 
   private

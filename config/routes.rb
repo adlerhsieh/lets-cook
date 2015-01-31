@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :prepare_lists, only: :index
+  resources :ingredients
 
   root to: "home#welcome"
   

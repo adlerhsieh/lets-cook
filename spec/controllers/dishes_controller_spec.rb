@@ -12,6 +12,9 @@ describe DishesController, :type => :controller do
 		expect(@count).to eq(Ingredient.count - 9)
 	end
 
-
+	it "search" do
+		get :search, :dish => {:file => "肉"}
+		expect(response.status).to eq(200)
+	end
 
 end
