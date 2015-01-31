@@ -52,11 +52,18 @@ ActiveRecord::Schema.define(version: 20150131054734) do
 
   add_index "ingredients", ["dish_id"], name: "index_ingredients_on_dish_id", using: :btree
 
-  create_table "prepare_lists", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "ingredient"
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prepare_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ingredient_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

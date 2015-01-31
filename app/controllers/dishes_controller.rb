@@ -22,8 +22,8 @@ class DishesController < ApplicationController
     @ingredients = Ingredient.where(['name LIKE ?', "%#{params[:file]}%"])
     if @ingredients.size > 0
       @ingredients.each do |ingredient|
-        @dishes.push(ingredient)
-      end 
+        @dishes.push(ingredient.dish)
+      end
     end
     render :json => @dishes
   end
