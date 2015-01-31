@@ -9,8 +9,11 @@ class PrepareListsController < ApplicationController
   end
 
   def create
-  	@ingredient_id = params[:ingredient_id]
-  	PrepareList.create(:user_id => current_user.id, :ingredient_id => @ingredient_id)
-	  render :json => true	
+    puts params
+  	@ingredient_ids = params[:ingredient_ids]
+    @ingredient_ids.each do |id|
+    	PrepareList.create(:user_id => current_user.id, :ingredient_id => id)
+    end
+	  render :json => true
   end
 end
