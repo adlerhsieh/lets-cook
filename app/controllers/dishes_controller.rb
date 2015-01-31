@@ -4,15 +4,15 @@ class DishesController < ApplicationController
   # require 'watir-webdriver'
 
   def create
-    if dish_params[:link].scan("http").count > 0
-      link = dish_params[:link]
-    else
-      link = dish_params[:link][26..-1]
-    end
+    # if dish_params[:link].scan("http").count > 0
+    #   link = dish_params[:link]
+    # else
+    #   link = dish_params[:link][26..-1]
+    # end
 
-    b = Watir::Browser.new
-    b.goto(URI::encode(link))
-    puts b.div(:class, 'object').a.when_present.text
+    # b = Watir::Browser.new
+    # b.goto(URI::encode(link))
+    # puts b.div(:class, 'object').a.when_present.text
 
     # content = Nokogiri::HTML(open(URI::encode(link)))
     # item_array = content.css("li .object a")
@@ -32,6 +32,16 @@ class DishesController < ApplicationController
     # @dish.ingredients.create(:name => "", :amount => "")
 
     # render :json => object_array
+
+    @dish = Dish.new(dish_params.except(:link)).save!
+    @ingredients = Dish.where(:user_id => nil).find_by_name(@dish[:name]).ingredients.all
+    array = []
+    @ingredients.each do |ingredient|
+      hash = ingredient.except("id", "created_at", "updated_at")
+      new_ingredient = Ingredient.create!(hash)
+      array << new_ingredient
+    end
+    render :json => @dish.serializable_hash.merge(:ingredients => array)
   end
 
   def destroy
@@ -46,22 +56,33 @@ class DishesController < ApplicationController
 
     # content = Nokogiri::HTML(open(URI::encode("http://www.dodocook.com/recipes/category?st=1&sk=#{params[:fild]}")))
 
-    content = Nokogiri::HTML(open(URI::encode("http://recipe.ytower.com.tw/Channel/MultiSearch/#{params[:file]}")))
+    # content = Nokogiri::HTML(open(URI::encode("http://recipe.ytower.com.tw/Channel/MultiSearch/#{params[:file]}")))
 
-    title_array = content.css(".rcp_img img")
-    image_array = content.css(".rcp_img img")
-    link_array = content.css(".rcp_img a")
+    # title_array = content.css(".rcp_img img")
+    # image_array = content.css(".rcp_img img")
+    # link_array = content.css(".rcp_img a")
 
-    object_array = []
+    # object_array = []
 
-    title_array.each do |title|
-      index = title_array.index(title)
-      object_array.push({"name" => title_array[index].attr("alt"),
-                 "lg_pic_link" => image_array[index].attr("src"),
-                 "link"  => "http://recipe.ytower.com.tw" + link_array[index].attr('href')
-                })
+    # title_array.each do |title|
+    #   index = title_array.index(title)
+    #   object_array.push({"name" => title_array[index].attr("alt"),
+    #              "lg_pic_link" => image_array[index].attr("src"),
+    #              "link"  => "http://recipe.ytower.com.tw" + link_array[index].attr('href')
+    #             })
+
+    @dishes = Dish.where(['name LIKE ?', "%#{params[:file]}%"])
+    @ingredients = Ingredient.where(['name LIKE ?', "%#{params[:file]}%"])
+    if @ingredients.size > 0
+      @ingredients.each do |ingredient|
+        @dishes.push(ingredient.dish)
+      end 
     end
-    render :json => object_array
+    hash = @dishes.uniq
+
+
+    render :json => hash
+
   end
 
   private
