@@ -25,7 +25,7 @@ class DishesController < ApplicationController
         @dishes.push(ingredient.dish)
       end
     end
-    render :json => @dishes
+    render :json => @dishes.uniq
   end
 
   private
