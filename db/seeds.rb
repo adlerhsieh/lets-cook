@@ -12,7 +12,7 @@ Ingredient.delete_all
 
 dish = Dish.create(
 				:name => "日式馬鈴薯燉肉",
-				:lg_pic_link => "images/potato_meat.jpg"
+				:lg_pic_link => "/images/potato_meat.jpg"
 				)
 dish.ingredients.create(
         dish_id: dish.id,
@@ -53,7 +53,7 @@ dish.ingredients.create(
 # https://icook.tw/recipes/99716
 dish2 = Dish.create(
 				:name => "巨無霸黃金蛋餃",
-				:lg_pic_link => "images/gold_egg.jpg"
+				:lg_pic_link => "/images/gold_egg.jpg"
 				)
 dish2.ingredients.create(
 				dish_id: dish2.id,
