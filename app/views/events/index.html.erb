@@ -71,36 +71,31 @@
             <div class="posts">
                 <h1 class="content-subhead">舉辦新活動</h1> 
                 <section class="post">
-                    <form class="pure-form pure-form-aligned">
-                        <fieldset>
+                    <%= form_for @new_event, :class => "pure-form pure-form-aligned"  do |form| %>
+                            <p style="color:red"><%= flash[:notice] %></p>
                             <div class="pure-control-group">
                                 <label for="">活動地點</label>
-                                <input class="placeholder" id="place" type="text" placeholder="">
+                                <%= form.text_field :hold_place, :class => "placeholder", :id => "place" %>
                             </div>
 
                             <div class="pure-control-group">
                                 <label for="">活動時間</label>
-                                <input class="placeholder" id="time" type="password" placeholder="">
+                                <%= form.text_field :hold_time, :class => "placeholder", :id => "time" %>
                             </div>
 
                             <div class="pure-control-group">
                                 <label for="">主辦人</label>
-                                <input class="placeholder" id="holder" type="email" placeholder="">
+                                <input class="placeholder" id="holder" type="text" placeholder="">
                             </div>
 
                             <div class="pure-control-group">
                                 <label for="deadline">加菜期限</label>
-                                <input class="placeholder" id="deadline" type="text" placeholder="">
+                                <%= form.text_field :add_dish_dealine, :class => "placeholder", :id => "deadline" %>
                             </div>
-
                             <div class="pure-controls">
-                                
-
-                                <button type="submit" class="pure-button pure-button-primary">建立</button>
+                                <%= form.submit "建立", :class => "pure-button pure-button-primary submit-new-event" %>
                             </div>
-                        </fieldset>
-                    </form>
-
+                    <% end %>
                     
                 </section>
             </div>
@@ -114,6 +109,7 @@
                         <div class="pure-u-1 pure-u-md-2-3">
                             <header class="post-header">
                         
+                        <% if @events %>
                             <% @events.each do |event| %>
                                 <h2 class="post-title"><%= @event.time %></h2>
 
@@ -124,7 +120,8 @@
                                  <p class="post-meta">
                                     At <%= @event.place %>
                                 </p>
-                            <% end %>                            
+                            <% end %> 
+                        <% end %>                           
                             </header>
                         </div>
                         <div class="pure-u-1 pure-u-md-1-3">

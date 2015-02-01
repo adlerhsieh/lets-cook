@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = current_user.participated_groups
+    @new_event = Event.new
   end
 
   def show
@@ -10,8 +11,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
-    redirect_to @event
+    @new_event = Event.new(event_params)
+    @new_event[:admin_id] = 1
+    if @new_event.save
+      redirect_to event_path(@event[:id])
+    else
+      flash[:notice] = "欄位不可有空白！"
+      render :index
+    end
   end
 
   private

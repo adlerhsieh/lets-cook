@@ -23,8 +23,13 @@ h3 {
     height: auto;
 }
 
+div.pure-control-group {
+    margin-top: 20px;
+}
+
 div.pure-control-group input.placeholder {
     width: 200px;
+    margin-left: 40px;
 }
 
 h1.brand-title {
@@ -32,8 +37,18 @@ h1.brand-title {
     font-weight: bold;
 }
 
+.submit-new-event {
+    margin-top: 30px;
+    margin-left: 250px;
+}
+
 #event_index_layout {
     padding: 0;
+}
+
+#new_event {
+    margin-left: 100px;
+    margin-top: 30px;
 }
 
 .header {
