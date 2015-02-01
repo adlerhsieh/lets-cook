@@ -1,7 +1,6 @@
 class DishesController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
-  # require 'watir-webdriver'
 
   def create
     @dish = Dish.create!(dish_params.except(:link))
@@ -20,7 +19,7 @@ class DishesController < ApplicationController
   end
 
   def search
-    @dishes = Dish.where(['name LIKE ?', "%#{params[:file]}%"])
+    @dishes = Dish.where(['name LIKE ?', "%#{params[:file]}%"]).where(:user_id => nil)
     dish_names = @dishes.map {|dish| dish[:name] }
     @ingredients = Ingredient.where(['name LIKE ?', "%#{params[:file]}%"])
     if @ingredients.size > 0
