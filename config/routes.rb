@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       post 'search'
     end
   end
-  resources :prepare_lists, only: :index
+  resources :prepare_lists, only: [:index, :create]
   resources :ingredients, only: [:create, :destroy]
 
   root to: "home#welcome"

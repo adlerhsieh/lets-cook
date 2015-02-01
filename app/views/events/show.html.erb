@@ -23,7 +23,7 @@
     </div>
   </div>
   <div id="main" class="pure-u-1" style="width:95%">
-    <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
+    <button class="pure-button pure-button-success save" style="right:20px;position:fixed">儲存</button>
     <div class="dishes">
       <% @dishes.each do |dish| %>
 
@@ -47,8 +47,22 @@
                 <td><%= ingredient_tmp_id %></td>
                 <td><%= ingredient.name %></td>
                 <td><%= ingredient.amount %></td>
-                <td><%= ingredient.preparer[0] ? ingredient.preparer[0].email : "None" %></td>
-                <td><input id="" type="checkbox"></td>
+                <td>
+                  <% if ingredient.preparer[0] %>
+                    <% ingredient_preparers = ingredient.preparer.map(&:email).join(" ") %>
+                    <%= ingredient_preparers %>
+                  <% else %>
+                    None
+                    <% ingredient_preparers = "" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if ingredient_preparers.include? current_user.email %>
+                    <input class="ingredient_id" id="ingredient_id_<%= ingredient.id %>" value="<%= ingredient.id %>" type="checkbox" checked>
+                  <% else %>
+                    <input class="ingredient_id" id="ingredient_id_<%= ingredient.id %>" value="<%= ingredient.id %>" type="checkbox">
+                  <% end %>
+                </td>
                 <% ingredient_tmp_id += 1 %>
               </tr>
               <% end %>
@@ -127,6 +141,39 @@
               ingredient_lists += '<tr><td>'+(i+1)+'</td><td>'+result.ingredients[i].name+'</td><td>'+result.ingredients[i].amount+'</td><td>None</td><td><input id="'+result.ingredients[i].id+'" type="checkbox"></td></tr>';
             };
             $('.dishes').append('<div><div class=""><h1>'+result.name+'</h1></div><div class=""><table class="pure-table pure-table-horizontal" style="width:100%"><thead><tr><th>#</th><th>食材</th><th>數量</th><th>提供人</th><th>我來提供</th></tr></thead><tbody>'+ingredient_lists+'</tbody></table></div></div>');
+          }
+        });
+      });
+      $('#main').on('click','.save',function(){
+        var ingredient_ids = $('input.ingredient_id:checked').map(function(){ return $(this).val(); }).get();
+        // console.log(ingredient_ids);
+        $.ajax({
+          url: "/prepare_lists",
+          type: "POST",
+          data: {
+                  "ingredient_ids": ingredient_ids
+                },
+          success: function(result){
+            // console.log(result);
+            var add_on_email = result.user_email;
+            // console.log(add_on_email);
+            for (var i = 0; i <= ingredient_ids.length - 1; i++) {
+              // console.log(ingredient_ids[i]);
+              console.log($('input#ingredient_id_'+ingredient_ids[i]).parent().prev());
+              var original_email =  $('input#ingredient_id_'+ingredient_ids[i]).parent()
+                                                                               .prev()
+                                                                               .text();
+              console.log(original_email);
+              if(original_email.indexOf("None") >= 0){
+                $('input#ingredient_id_'+ingredient_ids[i]).parent()
+                                                           .prev()
+                                                           .text(add_on_email);
+              }else if(original_email.indexOf(add_on_email) < 0){
+                $('input#ingredient_id_'+ingredient_ids[i]).parent()
+                                                           .prev()
+                                                           .text(add_on_email+" "+original_email);
+              }
+            };
           }
         });
       });

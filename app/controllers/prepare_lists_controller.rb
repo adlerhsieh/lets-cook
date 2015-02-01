@@ -6,8 +6,8 @@ class PrepareListsController < ApplicationController
   def create
   	@ingredient_ids = params[:ingredient_ids]
     @ingredient_ids.each do |id|
-    	PrepareList.create(:user_id => current_user.id, :ingredient_id => id)
+    	PrepareList.find_or_create_by(:user_id => current_user.id, :ingredient_id => id)
     end
-	  render :json => true
+	  render :json => { user_email: current_user.email }
   end
 end
