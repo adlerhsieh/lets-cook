@@ -288,6 +288,7 @@ my_dish4.ingredients.create(:name => '糖',:amount => '一匙')
 my_dish4.ingredients.create(:name => '薑末以及蒜末',:amount => '適量')
 
 my_dish5 = Dish.create(:name => '牛肉湯', :lg_pic_link => '/images/beef_soup.jpg')
+
 my_dish5.ingredients.create(:name => '洋蔥（切塊）',:amount => '1顆')
 
 my_dish5.ingredients.create(:name => '蒜苗（切斜段分蒜白和蒜綠）',:amount => '1支')
