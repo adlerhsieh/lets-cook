@@ -1,6 +1,6 @@
-class EventController < ApplicationController
+class EventsController < ApplicationController
   def index
-    @evnets = current_user.participated_groups
+    @events = current_user.participated_groups
   end
 
   def show

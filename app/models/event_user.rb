@@ -1,4 +1,4 @@
 class EventUser < ActiveRecord::Base
   belongs_to :user
-  belongs_to :evnet
+  belongs_to :event
 end
