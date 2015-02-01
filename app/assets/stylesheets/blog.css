@@ -27,6 +27,11 @@ div.pure-control-group input.placeholder {
     width: 200px;
 }
 
+h1.brand-title {
+    color: white;
+    font-weight: bold;
+}
+
 #event_index_layout {
     padding: 0;
 }
