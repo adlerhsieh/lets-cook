@@ -24,55 +24,51 @@
   </div>
   <div id="main" class="pure-u-1" style="width:95%">
     <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
-    
-      <div class=" dishes">
-        <div>
-          <div class="">
-            <h1>青醬麵XD</h1>
-          </div>
-          <div class="">
-            <table class="pure-table pure-table-horizontal" style="width:100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>食材</th>
-                  <th>提供人</th>
-                  <th>我來提供</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>蔥</td>
-                  <td>None</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Toyota</td>
-                  <td>Camry</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Hyundai</td>
-                  <td>Elantra</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Hyundai</td>
-                  <td>Elantra</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <div class="dishes">
+      <div>
+        <div class="">
+          <h1>青醬麵XD</h1>
         </div>
-        
-        
+        <div class="">
+          <table class="pure-table pure-table-horizontal" style="width:100%">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>食材</th>
+                <th>提供人</th>
+                <th>我來提供</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>蔥</td>
+                <td>None</td>
+                <td><input id="" type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Toyota</td>
+                <td>Camry</td>
+                <td><input id="" type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Hyundai</td>
+                <td>Elantra</td>
+                <td><input id="" type="checkbox"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Hyundai</td>
+                <td>Elantra</td>
+                <td><input id="" type="checkbox"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    
+    </div>
   </div>
 </div>
 
@@ -135,7 +131,11 @@
                 },
           success: function(result){
             console.log(result);
-
+            var ingredient_lists = "";
+            for (var i = 1; i <= result.ingredients.length; i++) {
+              ingredient_lists += '<tr><td>'+i+'</td><td>'+i.name+'</td><td>None</td><td><input id="'+i.id+'" type="checkbox"></td></tr>';
+            };
+            $('.dishes').append('<div><div class=""><h1>'+result.name+'</h1></div><div class=""><table class="pure-table pure-table-horizontal" style="width:100%"><thead><tr><th>#</th><th>食材</th><th>提供人</th><th>我來提供</th></tr></thead><tbody>'+ingredient_lists+'</tbody></table></div></div>');
           }
         });
       });
