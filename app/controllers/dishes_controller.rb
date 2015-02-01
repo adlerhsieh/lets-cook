@@ -5,12 +5,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.create!(dish_params.except(:link))
     array = []
-    Dish.where(:name => dish_params[:name]).first.ingredients.each do |i|
-      hash = i.serializable_hash.except("id", "created_at", "updated_at")
-      hash["dish_id"] = @dish[:id]
-      new_i = Ingredient.create!(hash)
-      array << new_i
-    end
+    Dish.where(:name => dish_params[:name]).first.ingredients.each { |i| array << i }
     render :json => @dish.serializable_hash.merge(:ingredients => array)
   end
 
