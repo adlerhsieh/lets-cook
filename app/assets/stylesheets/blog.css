@@ -23,7 +23,11 @@ h3 {
     height: auto;
 }
 
-#layout {
+div.pure-control-group input.placeholder {
+    width: 200px;
+}
+
+#event_index_layout {
     padding: 0;
 }
 
