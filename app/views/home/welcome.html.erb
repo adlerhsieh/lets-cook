@@ -6,11 +6,12 @@
             <li class="pure-menu-selected"><a href="#">建立活動</a></li>
             <% if current_user %>
               <li>
-                <%= link_to("登出", destroy_user_session_path, method: :delete) %>
+
+                <%= link_to("登出", destroy_user_session_path, method: :delete, class: 'login') %>
               </li>
             <% else %>
               <li>
-                <%= link_to("登入", new_user_session_path) %>
+                <a href="#" class="login">登入</a>
               </li>
             <% end %>
         </ul>
@@ -24,19 +25,31 @@
             共煮一份晚餐，共享一份溫馨
         </h2>
         <h2 style="margin-top:100px;">
-            <a href="http://purecss.io" class="pure-button pure-button-primary">立即開始</a>
+            <a href="#" class="pure-button pure-button-primary get-started login">立即開始</a>
         </h2>
+        <form class="pure-form pure-form-stacked overlay">
+            <fieldset>
+                <input id="email" type="email" placeholder="Email">
+
+                <input id="password" type="password" placeholder="Password">
+
+
+                <button type="submit" class="pure-button pure-button-primary">登入</button>
+                
+                <a href="#" class="register"> &nbsp;免費註冊</a>
+            </fieldset>
+        </form>
     </div>
 </div>
 
 <div class="content-wrapper">
-    <div class="content">
+    <div class="index-content">
         <h2 class="content-head is-center">三個特色</h2>
 
         <div class="pure-g">
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 features">
 
-                <h1 class="content-subhead">
+                <h1 class="content-subhead three">
                     獨特
                 </h1>
                 <i class="fa fa-star"></i>
@@ -45,7 +58,7 @@
                 </p>
             </div>
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 features">
-                <h1 class="content-subhead">
+                <h1 class="content-subhead three">
                    經濟
                 </h1>
                 <i class="fa fa-usd"></i>
@@ -54,7 +67,7 @@
                 </p>
             </div>
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3 features">
-                <h1 class="content-subhead">
+                <h1 class="content-subhead three">
                     溫馨
                 </h1>
                 <i class="fa fa-heart"></i>
@@ -66,14 +79,15 @@
         </div>
     </div>
 
-    <div class="content four_steps" style="background-color:#2d3e50">
+    <div class="index-content four_steps" style="background-color:#2d3e50;padding-top:50px;">
+
         <h2 class="content-head is-center">四個步驟</h2>
 
         <div class="pure-g">
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 steps">
               <div class="circle">
                 <span class="helper"></span>
-                <h2 class="content-subhead">
+                <h2 class="content-subhead four">
                     建立活動
                 </h2>
               </div>
@@ -83,7 +97,7 @@
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 steps">
               <div class="circle">
                 <span class="helper"></span>
-                <h2 class="content-subhead">
+                <h2 class="content-subhead four">
                     提供食材
                 </h2>
                 </div>
@@ -92,7 +106,7 @@
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 steps">
               <div class="circle">
                 <span class="helper"></span>
-                <h2 class="content-subhead">
+                <h2 class="content-subhead four">
                     選擇食譜
                 </h2>
               </div>  
@@ -100,7 +114,7 @@
             <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 steps">
               <div class="circle">
                 <span class="helper"></span>
-                <h2 class="content-subhead">
+                <h2 class="content-subhead four">
                     
                     吃飯囉！
                 </h2>
@@ -127,3 +141,21 @@
     </div>
 
 </div>
+<script>
+    $(document).ready(function(){
+        $('.login').click(function(){
+            if($('.overlay').hasClass('overlayShow')){
+                $('.overlay').removeClass('overlayShow');
+                $('.get-started').fadeIn();
+            }
+            else{
+                $('.overlay').addClass('overlayShow');
+                $('.get-started').fadeOut();
+                
+            }
+                
+        });
+        
+    });
+
+</script>

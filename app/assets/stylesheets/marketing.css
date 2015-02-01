@@ -1,3 +1,28 @@
+.overlay {
+    margin: auto;
+    position: fixed;
+    bottom: -100%;
+    text-align: center;
+    padding-bottom: 1em;
+     -webkit-transition:  bottom 0.7s;
+    -moz-transition: bottom 0.7s;
+    left: 0;
+   right: 0;
+   width:25%;
+
+}
+form {
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+.overlayShow {
+     bottom: 20%;
+}
+
+.register {
+    padding-top:5em;
+}
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -125,7 +150,12 @@ a.pure-button-primary {
     color: #AECFE5;
 }
 
-
+.three {
+    font-size: 2em;
+}
+.four {
+    font-size: 1.5em;
+}
 /*
  * -- SPLASH STYLES --
  * This is the blue top section that appears on the page.
@@ -283,4 +313,12 @@ a.pure-button-primary {
     .splash-head {
         font-size: 300%;
     }
+}
+@media (max-width: 576px){
+    .overlayShow {
+     bottom: 22%;
+}
+.overlay {
+    width:50%;
+}
 }
