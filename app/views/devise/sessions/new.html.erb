@@ -4,15 +4,10 @@
 
   <fieldset>
     <legend>A Stacked Form</legend>
-
     <label for="email">Email</label>
     <%= f.email_field :email, autofocus: true %>
-
     <label for="password">Password</label>
     <%= f.password_field :password, autocomplete: "off" %>
-
-
-    
     <%= f.submit "Log in", class: "pure-button pure-button-primary" %>
     <!-- <button type="submit" class="pure-button pure-button-primary">Sign in</button> -->
   </fieldset>

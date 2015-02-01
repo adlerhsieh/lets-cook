@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @events = current_user.participated_groups
     @new_event = Event.new
@@ -20,6 +22,10 @@ class EventsController < ApplicationController
       flash[:notice] = "欄位不可有空白！"
       render :index
     end
+  end
+
+  def authenticate_user
+    redirect_to '/users/sign_in' unless current_user
   end
 
   private

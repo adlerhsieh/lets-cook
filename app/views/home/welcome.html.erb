@@ -3,7 +3,7 @@
         <a class="pure-menu-heading" href="">朋友最食在</a>
 
         <ul>
-            <li class="pure-menu-selected"><a href="#">建立活動</a></li>
+            <li class="pure-menu-selected"><%= link_to("所有活動", events_path)%></li>
             <% if current_user %>
               <li>
 
@@ -11,7 +11,10 @@
               </li>
             <% else %>
               <li>
-                <a href="#" class="login">登入</a>
+                <a href="/users/sign_up" class="login">註冊</a>
+              </li>
+              <li>
+                <a href="/users/sign_in" class="login">登入</a>
               </li>
             <% end %>
         </ul>
@@ -25,19 +28,23 @@
             共煮一份晚餐，共享一份溫馨
         </h2>
         <h2 style="margin-top:100px;">
-            <a href="#" class="pure-button pure-button-primary get-started login">立即開始</a>
+        <% if current_user %>
+            <a href="/events" class="pure-button pure-button-primary get-started login">立即開始</a>
+        <% else %>
+            <a href="/users/sign_in" class="pure-button pure-button-primary get-started login">立即開始</a>
+        <% end %>
         </h2>
         <form class="pure-form pure-form-stacked overlay">
-            <fieldset>
+        
+
+
+
+            <!-- <fieldset>
                 <input id="email" type="email" placeholder="Email">
-
                 <input id="password" type="password" placeholder="Password">
-
-
                 <button type="submit" class="pure-button pure-button-primary">登入</button>
-                
                 <a href="#" class="register"> &nbsp;免費註冊</a>
-            </fieldset>
+            </fieldset> -->
         </form>
     </div>
 </div>
@@ -123,7 +130,7 @@
             </div>
             <div class="pure-u-1" style="text-align:center;margin:20px;">
               <h2>
-                  <a href="http://purecss.io" class="pure-button pure-button-primary">立即開始</a>
+                  <a href="/users/sign_in" class="pure-button pure-button-primary">立即開始</a>
               </h2>
               
             </div>
@@ -142,20 +149,20 @@
 
 </div>
 <script>
-    $(document).ready(function(){
-        $('.login').click(function(){
-            if($('.overlay').hasClass('overlayShow')){
-                $('.overlay').removeClass('overlayShow');
-                $('.get-started').fadeIn();
-            }
-            else{
-                $('.overlay').addClass('overlayShow');
-                $('.get-started').fadeOut();
+    // $(document).ready(function(){
+    //     $('.login').click(function(){
+    //         if($('.overlay').hasClass('overlayShow')){
+    //             $('.overlay').removeClass('overlayShow');
+    //             $('.get-started').fadeIn();
+    //         }
+    //         else{
+    //             $('.overlay').addClass('overlayShow');
+    //             $('.get-started').fadeOut();
                 
-            }
+    //         }
                 
-        });
+    //     });
         
-    });
+    // });
 
 </script>
