@@ -1,6 +1,7 @@
 class PrepareListsController < ApplicationController
   def index
     @prepared_ingredients = current_user.prepared_ingredients
+    render :json => @prepared_ingredients
   end
 
   def create

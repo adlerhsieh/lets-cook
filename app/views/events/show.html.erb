@@ -194,8 +194,23 @@
       });
       $('li').on('click','#open-prepare',function(e){
         e.preventDefault();
+        var display_area = $('#prepare_list_block').first();
+        console.log(display_area);
+        display_area.empty();
+        $.ajax({
+          url: '/prepare_lists',
+          type: 'GET',
+          success: function(result){
+            console.table(result);
+            for (var i = 0; i <= result.length - 1; i++) {
+              display_area.append('<div class="pure-u-3-4"><h4 class="email-subject">'+result[i].name+'</h4><p class="email-desc">'+result[i].amount+'</p></div>');
+            };
+            $('span.email-count').text('('+result.length+')');
+          }
+        });
         $('#prepare_list_block').css('display','block');
         $('#search_block').css('display','none');
       });
+
     });
 </script>
