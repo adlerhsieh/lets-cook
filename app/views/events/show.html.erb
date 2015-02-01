@@ -24,55 +24,42 @@
   </div>
   <div id="main" class="pure-u-1" style="width:95%">
     <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
-    
-      <div class=" dishes">
-        <div>
-          <div class="">
-            <h1>青醬麵XD</h1>
-          </div>
-          <div class="">
-            <table class="pure-table pure-table-horizontal" style="width:100%">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>食材</th>
-                  <th>提供人</th>
-                  <th>我來提供</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>蔥</td>
-                  <td>None</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Toyota</td>
-                  <td>Camry</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Hyundai</td>
-                  <td>Elantra</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Hyundai</td>
-                  <td>Elantra</td>
-                  <td><input id="" type="checkbox"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <div class="dishes">
+      <% @dishes.each do |dish| %>
+
+      <div>
+        <div class=""><h1><%= dish.name %></h1></div>
+        <div class="">
+          <table class="pure-table pure-table-horizontal" style="width:100%">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>食材</th>
+                <th>數量</th>
+                <th>提供人</th>
+                <th>我來提供</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% ingredient_tmp_id = 1 %>
+              <% dish.ingredients.each do |ingredient| %>
+              <tr>
+                <td><%= ingredient_tmp_id %></td>
+                <td><%= ingredient.name %></td>
+                <td><%= ingredient.amount %></td>
+                <td><%= ingredient.preparer[0] ? ingredient.preparer[0].email : "None" %></td>
+                <td><input id="" type="checkbox"></td>
+                <% ingredient_tmp_id += 1 %>
+              </tr>
+              <% end %>
+              <% ingredient_tmp_id = 1 %>
+            </tbody>
+          </table>
         </div>
-        
-        
       </div>
-    
+
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -135,7 +122,11 @@
                 },
           success: function(result){
             console.log(result);
-
+            var ingredient_lists = "";
+            for (var i = 0; i <= result.ingredients.length - 1; i++) {
+              ingredient_lists += '<tr><td>'+(i+1)+'</td><td>'+result.ingredients[i].name+'</td><td>'+result.ingredients[i].amount+'</td><td>None</td><td><input id="'+result.ingredients[i].id+'" type="checkbox"></td></tr>';
+            };
+            $('.dishes').append('<div><div class=""><h1>'+result.name+'</h1></div><div class=""><table class="pure-table pure-table-horizontal" style="width:100%"><thead><tr><th>#</th><th>食材</th><th>數量</th><th>提供人</th><th>我來提供</th></tr></thead><tbody>'+ingredient_lists+'</tbody></table></div></div>');
           }
         });
       });
