@@ -12,9 +12,10 @@ class EventsController < ApplicationController
 
   def create
     @new_event = Event.new(event_params)
+    # binding.pry
     @new_event[:admin_id] = 1
     if @new_event.save
-      redirect_to event_path(@event[:id])
+      redirect_to event_path(@new_event[:id])
     else
       flash[:notice] = "欄位不可有空白！"
       render :index
@@ -24,6 +25,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:hold_place, :hold_time, :add_dish_deadline, :admin_id)
+    params.require(:event).permit(:hold_place, :hold_time, :add_dish_dealine)
   end
 end

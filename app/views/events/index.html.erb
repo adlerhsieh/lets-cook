@@ -80,17 +80,12 @@
 
                             <div class="pure-control-group">
                                 <label for="">活動時間</label>
-                                <%= form.text_field :hold_time, :class => "placeholder", :id => "time" %>
+                                <%= form.text_field :hold_time, :class => "placeholder", :id => "time", :placeholder => "格式：2015-01-01" %>
                             </div>
 
                             <div class="pure-control-group">
-                                <label for="">主辦人</label>
-                                <input class="placeholder" id="holder" type="text" placeholder="">
-                            </div>
-
-                            <div class="pure-control-group">
-                                <label for="deadline">加菜期限</label>
-                                <%= form.text_field :add_dish_dealine, :class => "placeholder", :id => "deadline" %>
+                                <label for="dealine">加菜期限</label>
+                                <%= form.text_field :add_dish_dealine, :class => "placeholder", :id => "dealine", :placeholder => "格式：2015-01-01" %>
                             </div>
                             <div class="pure-controls">
                                 <%= form.submit "建立", :class => "pure-button pure-button-primary submit-new-event" %>
