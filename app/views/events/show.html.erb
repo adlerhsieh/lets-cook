@@ -4,8 +4,8 @@
     <div class="nav-inner">
       <div class="pure-menu pure-menu-open">
         <ul>
-          <li><a href="#">搜尋食譜 <span class="email-count"></span></a></li>
-          <li><a href="#">備忘清單</a></li>
+          <li><a href="#" id="open-search">搜尋食譜</a></li>
+          <li><a href="#" id="open-prepare">備忘清單 <span class="email-count">(<%= @prepared_ingredients.length %>)</span></a></li>
         </ul>
       </div>
     </div>
@@ -19,6 +19,16 @@
             <button class="pure-button pure-button-primary" id="search">搜尋</button>
           </fieldset>
         </form>
+      </div>
+    </div>
+    <div class="pure-u-1" id="prepare_list_block">
+      <div class="email-item  pure-g">
+        <% @prepared_ingredients.each do |prepared_item| %>
+          <div class="pure-u-3-4">
+            <h4 class="email-subject"><%= prepared_item.name %></h4>
+            <p class="email-desc"><%= prepared_item.amount %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -176,6 +186,16 @@
             };
           }
         });
+      });
+      $('li').on('click','#open-search',function(e){
+        e.preventDefault();
+        $('#search_block').css('display','block');
+        $('#prepare_list_block').css('display','none');
+      });
+      $('li').on('click','#open-prepare',function(e){
+        e.preventDefault();
+        $('#prepare_list_block').css('display','block');
+        $('#search_block').css('display','none');
       });
     });
 </script>
