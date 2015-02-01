@@ -7,6 +7,7 @@ class DishesController < ApplicationController
     array = []
     Dish.where(:name => dish_params[:name]).first.ingredients.each do |i|
       hash = i.serializable_hash.except("id", "created_at", "updated_at")
+      hash["dish_id"] = @dish[:id]
       new_i = Ingredient.create!(hash)
       array << new_i
     end
