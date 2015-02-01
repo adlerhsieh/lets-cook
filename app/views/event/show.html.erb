@@ -1,5 +1,5 @@
 <div id="layout" class="content pure-g">
-  <div id="nav" class="pure-u">
+  <div id="nav" class="pure-u-1">
     <a href="#" class="nav-menu-button">Menu</a>
     <div class="nav-inner">
       <div class="pure-menu pure-menu-open">
@@ -10,8 +10,8 @@
       </div>
     </div>
   </div>
-  <div id="list" class="pure-u">
-    <div class="email-item email-item-selected pure-g " id="search_block">
+  <div id="list" class="pure-u-1">
+    <div class="email-item email-item-selected " id="search_block">
       <div class="pure-u-1" style="text-align:center">
         <form class="pure-form">
           <fieldset>
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div id="main" class="pure-u">
+  <div id="main" class="pure-u-1" style="width:95%">
     <button class="pure-button pure-button-success" style="right:20px;position:fixed">儲存</button>
     
       <div class=" dishes">
@@ -134,10 +134,10 @@
                  }
                 },
           success: function(result){
-            console.log($('h4.dish-name-'+$(this).data("child")).text());
+            console.log(result);
+
           }
         });
       });
     });
-    console.log("<%= current_user.id %>");
 </script>
