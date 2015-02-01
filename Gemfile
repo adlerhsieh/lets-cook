@@ -6,7 +6,7 @@ gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0.beta1'
+# gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -40,14 +40,14 @@ group :development, :test do
   gem 'capybara'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0.0.beta4'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # gem 'quiet_assets'
+end
 
-  gem 'quiet_assets'
+group :production do
+  gem 'rails_12factor'
 end
 
 gem 'devise'
-gem 'rails_12factor'
-# gem 'watir-webdriver'
-# gem 'watir'
+gem 'pry'
